@@ -10,6 +10,12 @@ Admins can manage food items, monitor incoming orders, update order statuses, an
 
 ---
 
+## 🚀 Live Demo
+
+🔗 **Live Website:** [QuickGrab](https://canteen-preorder-ldva.vercel.app/)
+
+> QuickGrab is a college canteen pre-order and pickup queue management system that helps students order food in advance and skip long queues.
+
 ## 🚀 Features
 
 ### 👨‍🎓 Student Features
