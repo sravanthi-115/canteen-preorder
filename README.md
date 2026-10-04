@@ -16,6 +16,8 @@ Admins can manage food items, monitor incoming orders, update order statuses, an
 
 > QuickGrab is a college canteen pre-order and pickup queue management system that helps students order food in advance and skip long queues.
 
+---
+
 ## 🚀 Features
 
 ### 👨‍🎓 Student Features
