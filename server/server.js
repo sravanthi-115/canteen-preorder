@@ -3,22 +3,33 @@ const cors = require("cors");
 require("dotenv").config();
 
 const connectDB = require("./config/db");
+
 const authRoutes = require("./routes/authRoutes");
 const foodRoutes = require("./routes/foodRoutes");
 const orderRoutes = require("./routes/orderRoutes");
+
 const { protect } = require("./middleware/authMiddleware");
 const { adminOnly } = require("./middleware/roleMiddleware");
+const dbMiddleware = require("./middleware/dbMiddleware");
 
 const app = express();
 
-// Connect to MongoDB
-connectDB();
+// Initial MongoDB connection
+connectDB().catch((error) => {
+    console.error(
+        "Initial MongoDB connection failed:",
+        error.message
+    );
+});
 
 // Middleware
 app.use(cors());
 app.use(express.json());
 
-// Routes
+// Make sure MongoDB is connected before API requests
+app.use(dbMiddleware);
+
+// API Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/foods", foodRoutes);
 app.use("/api/orders", orderRoutes);
@@ -30,12 +41,15 @@ app.get("/", (req, res) => {
     });
 });
 
+// Protected test route
 app.get("/api/protected", protect, (req, res) => {
     res.json({
         message: "You accessed a protected route!",
         user: req.user
     });
 });
+
+// Admin test route
 app.get("/api/admin-test", protect, adminOnly, (req, res) => {
     res.json({
         message: "Welcome Admin! You have access to this route."
