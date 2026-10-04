@@ -1,10 +1,15 @@
 import { Link, useNavigate } from "react-router-dom";
+import "./Navbar.css";
 
 function Navbar() {
     const navigate = useNavigate();
 
     const token = localStorage.getItem("token");
-    const user = JSON.parse(localStorage.getItem("user"));
+    const user = JSON.parse(localStorage.getItem("user") || "null");
+
+    const isLoggedIn = !!token;
+    const isStudent = user?.role === "student";
+    const isAdmin = user?.role === "admin";
 
     const logout = () => {
         localStorage.removeItem("token");
@@ -14,49 +19,136 @@ function Navbar() {
     };
 
     return (
-        <nav>
-            <div>
-                <Link to="/">
-                    Canteen Pre-Order
+        <nav className="main-navbar">
+
+            {/* ================= BRAND ================= */}
+
+            <Link to="/" className="navbar-brand">
+
+                <img
+                    src="/quickgrab-logo.png"
+                    alt="QuickGrab"
+                    className="quickgrab-brand-icon"
+                />
+
+                <div className="brand-content">
+
+                    <div className="brand-name">
+                        QuickGrab
+                    </div>
+
+                    <div className="brand-tagline">
+                        Order. Skip the Queue. Grab Your Food.
+                    </div>
+
+                </div>
+
+            </Link>
+
+
+            {/* ================= NAV LINKS ================= */}
+
+            <div className="navbar-links">
+
+                {/* HOME - EVERYONE */}
+
+                <Link
+                    to="/"
+                    className="navbar-link"
+                >
+                    Home
                 </Link>
-            </div>
 
-            <div>
-                <Link to="/">Home</Link>
 
-                <Link to="/menu">Menu</Link>
+                {/* STUDENT ONLY */}
 
-                {token && user?.role === "student" && (
+                {isLoggedIn && isStudent && (
                     <>
-                        <Link to="/cart">Cart</Link>
-                        <Link to="/my-orders">
-                            My Orders
+                        <Link
+                            to="/menu"
+                            className="navbar-link"
+                        >
+                            🍽️ Menu
+                        </Link>
+
+                        <Link
+                            to="/cart"
+                            className="navbar-link"
+                        >
+                            🛒 Cart
+                        </Link>
+
+                        <Link
+                            to="/my-orders"
+                            className="navbar-link"
+                        >
+                            📋 My Orders
                         </Link>
                     </>
                 )}
 
-                {token && user?.role === "admin" && (
-                    <Link to="/admin">
-                        Dashboard
+
+                {/* ADMIN ONLY */}
+
+                {isLoggedIn && isAdmin && (
+                    <Link
+                        to="/admin"
+                        className="navbar-link"
+                    >
+                        📊 Dashboard
                     </Link>
                 )}
 
-                {!token ? (
+            </div>
+
+
+            {/* ================= RIGHT SIDE ================= */}
+
+            <div className="navbar-right">
+
+                {!isLoggedIn ? (
                     <>
-                        <Link to="/login">
+                        <Link
+                            to="/login"
+                            className="navbar-login"
+                        >
                             Login
                         </Link>
 
-                        <Link to="/register">
-                            Register
+                        <Link
+                            to="/register"
+                            className="navbar-register"
+                        >
+                            Get Started
                         </Link>
                     </>
                 ) : (
-                    <button onClick={logout}>
-                        Logout
-                    </button>
+                    <>
+                        <div className="user-pill">
+
+                            <div className="user-avatar">
+                                {user?.name
+                                    ?.charAt(0)
+                                    .toUpperCase()}
+                            </div>
+
+                            <span>
+                                {user?.name}
+                            </span>
+
+                        </div>
+
+                        <button
+                            className="navbar-logout"
+                            onClick={logout}
+                        >
+                            Logout
+                        </button>
+                    </>
                 )}
+
             </div>
+
         </nav>
     );
 }

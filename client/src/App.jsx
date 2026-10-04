@@ -10,7 +10,9 @@ import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import MyOrders from "./pages/MyOrders";
 import AdminDashboard from "./pages/AdminDashboard";
-import ProtectedRoute from "./components/ProtectedRoute";
+
+import StudentRoute from "./components/StudentRoute";
+import AdminRoute from "./components/AdminRoute";
 
 function App() {
     return (
@@ -20,27 +22,78 @@ function App() {
 
             <Routes>
 
-                <Route path="/" element={<Home />} />
-
-                <Route path="/login" element={<Login />} />
-
-                <Route path="/register" element={<Register />} />
-
-                <Route path="/menu" element={<Menu />} />
-
-                <Route path="/cart" element={<Cart />} />
-
-                <Route path="/checkout" element={<Checkout />} />
-
-                <Route path="/my-orders" element={<MyOrders />} />
+                {/* =========================
+                    PUBLIC PAGES
+                ========================= */}
 
                 <Route
-                  path="/admin"
-                  element={
-                      <ProtectedRoute role="admin">
-                          <AdminDashboard />
-                      </ProtectedRoute>
-                  }
+                    path="/"
+                    element={<Home />}
+                />
+
+                <Route
+                    path="/login"
+                    element={<Login />}
+                />
+
+                <Route
+                    path="/register"
+                    element={<Register />}
+                />
+
+
+                {/* =========================
+                    STUDENT ONLY PAGES
+                ========================= */}
+
+                <Route
+                    path="/menu"
+                    element={
+                        <StudentRoute>
+                            <Menu />
+                        </StudentRoute>
+                    }
+                />
+
+                <Route
+                    path="/cart"
+                    element={
+                        <StudentRoute>
+                            <Cart />
+                        </StudentRoute>
+                    }
+                />
+
+                <Route
+                    path="/checkout"
+                    element={
+                        <StudentRoute>
+                            <Checkout />
+                        </StudentRoute>
+                    }
+                />
+
+                <Route
+                    path="/my-orders"
+                    element={
+                        <StudentRoute>
+                            <MyOrders />
+                        </StudentRoute>
+                    }
+                />
+
+
+                {/* =========================
+                    ADMIN ONLY PAGE
+                ========================= */}
+
+                <Route
+                    path="/admin"
+                    element={
+                        <AdminRoute>
+                            <AdminDashboard />
+                        </AdminRoute>
+                    }
                 />
 
             </Routes>

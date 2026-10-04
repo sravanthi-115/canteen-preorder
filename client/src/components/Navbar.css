@@ -1,0 +1,462 @@
+/* =========================
+   NAVBAR
+========================= */
+
+.main-navbar {
+    width: 100%;
+    min-height: 82px;
+
+    padding: 8px 4%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: linear-gradient(
+        135deg,
+        #ff7a18,
+        #ff6a00
+    );
+
+    box-shadow:
+        0 4px 18px rgba(67, 20, 7, 0.15);
+
+    position: sticky;
+    top: 0;
+
+    z-index: 1000;
+}
+
+
+/* =========================
+   QUICKGRAB BRAND
+========================= */
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    text-decoration: none;
+
+    flex-shrink: 0;
+}
+
+
+/* LOGO ICON */
+
+.quickgrab-brand-icon {
+    width: 74px;
+    height: 74px;
+
+    object-fit: contain;
+
+    background: white;
+
+    border-radius: 14px;
+
+    padding: 4px;
+
+    flex-shrink: 0;
+
+    box-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.12);
+}
+
+
+/* BRAND TEXT */
+
+.brand-content {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    white-space: nowrap;
+}
+
+
+/* MAIN BRAND NAME */
+
+.brand-name {
+    color: #431407;
+
+    font-size: 30px;
+
+    font-weight: 900;
+
+    line-height: 1;
+
+    letter-spacing: -1px;
+}
+
+
+/* SMALL TAGLINE */
+
+.brand-tagline {
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    margin-top: 5px;
+
+    line-height: 1;
+
+    opacity: 0.95;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.navbar-links {
+    display: flex;
+    align-items: center;
+
+    gap: 5px;
+
+    margin-left: auto;
+    margin-right: 25px;
+}
+
+
+.navbar-link {
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    padding: 10px 13px;
+
+    border-radius: 9px;
+
+    white-space: nowrap;
+
+    transition: all 0.2s ease;
+}
+
+
+.navbar-link:hover {
+    background: rgba(255, 255, 255, 0.18);
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================
+   RIGHT SIDE
+========================= */
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    flex-shrink: 0;
+}
+
+
+/* LOGIN */
+
+.navbar-login {
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    padding: 10px 12px;
+}
+
+
+.navbar-login:hover {
+    opacity: 0.8;
+}
+
+
+/* GET STARTED */
+
+.navbar-register {
+    background: white;
+
+    color: #ea580c;
+
+    text-decoration: none;
+
+    padding: 11px 17px;
+
+    border-radius: 9px;
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+    white-space: nowrap;
+
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.12);
+
+    transition: all 0.2s ease;
+}
+
+
+.navbar-register:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 6px 15px rgba(0, 0, 0, 0.16);
+    color: #431407;
+}
+
+
+/* =========================
+   USER
+========================= */
+
+.user-pill {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+
+.user-avatar {
+    width: 35px;
+    height: 35px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    color: #ea580c;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 900;
+}
+
+
+/* LOGOUT */
+
+.navbar-logout {
+    border: none;
+
+    background: rgba(255, 255, 255, 0.16);
+
+    color: white;
+
+    padding: 9px 14px;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+
+.navbar-logout:hover {
+    background: white;
+
+    color: #ea580c;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1150px) {
+
+    .main-navbar {
+        padding: 8px 3%;
+    }
+
+    .brand-name {
+        font-size: 27px;
+    }
+
+    .brand-tagline {
+        font-size: 10px;
+    }
+
+    .quickgrab-brand-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .navbar-links {
+        margin-right: 10px;
+    }
+
+    .navbar-link {
+        font-size: 13px;
+
+        padding: 9px 9px;
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 850px) {
+
+    .main-navbar {
+        min-height: auto;
+
+        padding: 9px 15px;
+
+        flex-wrap: wrap;
+
+        row-gap: 8px;
+    }
+
+
+    .navbar-brand {
+        gap: 9px;
+    }
+
+
+    .quickgrab-brand-icon {
+        width: 45px;
+        height: 45px;
+
+        border-radius: 12px;
+    }
+
+
+    .brand-name {
+        font-size: 23px;
+
+        letter-spacing: -0.6px;
+    }
+
+
+    .brand-tagline {
+        font-size: 8px;
+
+        margin-top: 4px;
+    }
+
+
+    .navbar-right {
+        margin-left: auto;
+    }
+
+
+    .navbar-links {
+        order: 3;
+
+        width: 100%;
+
+        margin: 0;
+
+        justify-content: center;
+
+        overflow-x: auto;
+
+        gap: 2px;
+    }
+
+
+    .navbar-link {
+        font-size: 12px;
+
+        padding: 7px 9px;
+    }
+
+
+    .navbar-login {
+        font-size: 13px;
+
+        padding: 7px;
+    }
+
+
+    .navbar-register {
+        font-size: 11px;
+
+        padding: 8px 10px;
+    }
+
+
+    .user-pill span {
+        display: none;
+    }
+
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 500px) {
+
+    .main-navbar {
+        padding: 8px 11px;
+    }
+
+
+    .quickgrab-brand-icon {
+        width: 40px;
+        height: 40px;
+
+        border-radius: 10px;
+    }
+
+
+    .brand-name {
+        font-size: 21px;
+    }
+
+
+    .brand-tagline {
+        font-size: 7px;
+
+        max-width: 190px;
+
+        overflow: hidden;
+
+        text-overflow: ellipsis;
+    }
+
+
+    .navbar-register {
+        font-size: 10px;
+
+        padding: 7px 9px;
+    }
+
+
+    .navbar-links {
+        justify-content: flex-start;
+    }
+
+}
